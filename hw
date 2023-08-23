@@ -120,6 +120,149 @@ public class quickSort
 
 ====================================================================================================================================
 
+public class rn {
+        public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String a= sc.nextLine();
+        	Map<String, Integer> namecounts = new HashMap<>();
+        	for(String name : a) {
+        		namecounts.put(name, namecounts.getOrDefault(name, 0)+1);
+        	}
+        	String b = null;
+        	int c = Integer.MAX_VALUE;
+        	for(Map.Entry<String, Integer> entry : b.entrySet()) {
+        		if(entry.getValue()< c) {
+        			b= entry.getKey();
+        		}
+        	}
+        	System.out.println(b);
+        }
+====================================================================================================
+
+public class mon {
+public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int a = sc.nextInt();
+		int[] b = new int[a];
+		for(int i=0; i<a;i++) {
+			b[i] = sc.nextInt();
+		}
+		for(int i=1;i<a;i++) {
+			if(b[i]%b[0]==0) {
+				System.out.println(b[i]+"");
+			}
+		}
+}
+=======================================================================================================
+
+
+public class formatFirst {
+	public static void main(String[] args) {
+	Scanner sc= new Scanner(System.in);
+	String s=sc.nextLine().toUpperCase();
+	String[] names = s.split("\\.");
+	System.out.println(names[0].charAt(0) + " " +names[1].charAt(0));
+	}
+}
+
+======================================================================================================
+
+import java.util.*;
+public class matrix {
+  public static void main(String[] aa1gs) {
+  Scanner sc=new Scanner(System.in);
+  int a1,b1;
+  a1=sc.nextInt();
+  b1=sc.nextInt();
+  int[][]  a=new int[a1][b1];
+  int[][]  b=new int[a1][b1];
+  for(int i=0;i<a1;i++) {
+    for(int j=0;j<b1;j++)
+    {
+      a[i][j]=sc.nextInt();
+    }
+  }
+ if(a1==b1) {  
+  for(int i=0;i<a1;i++)
+  {
+    for(int j=0;j<b1;j++) {
+      b[i][j]=a[j][i];
+    }
+  }
+ }
+ int x=0;
+ for(int i=0;i<a1;i++) 
+   for(int j=0;j<b1;j++) 
+     if(a[i][j]==b[i][j])
+       x=1;
+if(x==1)
+{
+  System.out.println("yes");
+}
+else
+  System.out.println("no");
+  
+     }
+}
+
+
+==================================================================================================
+
+import java.util.*;
+public class ne {
+     public static int smallest(Integer[] a, int b){
+    	 Arrays.sort(a);
+    	 return a[b-1];
+     }
+     public static void main(String[] args) {
+    	 {
+    		 Integer a[] = new Integer[] {1,12,4,7,9};
+    		 int b= 3;
+    		 System.out.println(smallest(a,b));
+    	 }
+     }
+}
+
+======================================================================================================
+
+
+import java.util.Scanner;
+
+public class firstinputcase{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String sentence = sc.nextLine();
+        String[] words = sentence.split(" ");
+        for (int i = 0; i < words.length; i++) {      
+            String a = words[i].substring(0, 1);
+            String b = words[i].substring(1);     
+            a = a.toUpperCase();
+            words[i] = a + b;
+        }
+        String ans = String.join(" ", words);
+        System.out.println(ans);
+    }
+}
+
+=================================================================================================
+
+import java.util.*;
+public class psr {
+    public static void main(String[] args) {
+        int[] a = { 2, 4, 7, 9, 16, 25 }; 
+        for (int b : a) {
+            if (isValue(b)) {
+                System.out.println(b);
+            }
+        }
+    }
+    public static boolean isValue(int i) {
+        int sr = (int) Math.sqrt(i);
+        return sr * sr == i;
+    }
+}
+
+===================================================================================================
 
 import java.io.*;
 import java.util.*;
