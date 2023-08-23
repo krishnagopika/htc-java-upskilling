@@ -1,0 +1,187 @@
+public class bubbleSort {
+    public static void main(String [] args){
+    int i, j , swap;
+    int [] arr = {3,2,1,5};
+            for(i = 0; i < arr.length; i ++){
+                for(j = 0; j < arr.length - 1  ;j++){
+                    if(arr[j] > arr[j+1]){
+                        swap = arr[j];        
+                        arr[j] = arr[j+1]; 
+                        arr[j+1] = swap;  
+                    }
+                }
+            }
+           
+            for(int x = 0 ; x < arr.length ; x ++){
+            System.out.print(arr[x] + ", ");          
+            }
+    }
+=============================================================================================================
+public class insertionSort {
+	void sort(int arr[])
+	{
+		int n = arr.length;
+		for (int i = 1; i < n; ++i) {
+			int key = arr[i];
+			int j = i - 1;
+			while (j >= 0 && arr[j] > key) {
+				arr[j + 1] = arr[j];
+				j = j - 1;
+			}
+			arr[j + 1] = key;
+		}
+	}
+	static void printArray(int arr[])
+	{
+		int n = arr.length;
+		for (int i = 0; i < n; ++i)
+	            System.out.print(arr[i] + " ");
+                    System.out.println();
+	}
+	public static void main(String args[])
+	{
+		int arr[] = { 12, 11, 13, 5, 6 };
+		InsertionSort ob = new InsertionSort();
+		ob.sort(arr);
+		printArray(arr);
+	}
+};
+
+======================================================================================================================
+
+public class selectionSort {
+    public static void main(String a[]) {
+        int[] arr1 = { 1, 4, 67, 5, 88, 42, 220};
+       selectionSort(arr1);
+        for (int i : arr1) {
+            System.out.print(i+", ");
+        }
+    }
+    public static void selectionSort(int a[]){
+        int n=a.length;
+        for (int i = 0; i <n-1 ; i++) {
+            int m=i;
+            int d=0;
+            for (int j = i+1; j <n ; j++) {
+                if(a[j]< a[m]){
+                    m=j;
+                }
+            }
+            d=a[i];
+            a[i]=a[m];
+            a[m]=d;
+        }
+    }
+}
+
+====================================================================================================================
+
+import java.io.*;
+import java.util.*;
+public class quickSort 
+{
+	public static void swap(int[] arr, int i, int j)
+	{
+		int temp = arr[i];
+		arr[i] = arr[j];
+		arr[j] = temp;
+	}
+	public static int partition(int[] arr, int s, int e)
+	{
+		int pivot = arr[e];
+		int i = (s - 1);
+      	for (int j = s; j <= e - 1; j++) 
+		{
+			if (arr[j] < pivot) 
+			{
+              	i++;
+				swap(arr, i, j);
+			}
+		}
+		swap(arr, i + 1,e);
+		return (i++); 
+	}
+	static void quickSort(int[] arr, int low, int high)
+	{
+		if (low < high) 
+		{
+    	int pi = partition(arr, low, high);
+			quickSort(arr, low, pi - 1);
+			quickSort(arr, pi + 1, high);
+		}
+	}
+	static void printArray(int[] arr, int size)
+	{
+		for (int i = 0; i < size; i++)
+			System.out.print(arr[i] + " ");
+       	System.out.println();
+	}
+}
+
+====================================================================================================================================
+
+
+import java.io.*;
+import java.util.*;
+public class quickSort 
+{
+	public static void swap(int[] r, int i, int j)
+	{
+		int temp = r[i];
+		r[i] = r[j];
+		r[j] = temp;
+	}
+	public static int swapp(int[] r, int s, int e)
+	{
+		int a = r[e];
+		int i = (s - 1);
+      	for (int j = s; j <= e - 1; j++) 
+		{
+			if (r[j] < a) 
+			{
+              	i++;
+				swap(r, i, j);
+			}
+		}
+		swap(r, i + 1,e);
+		return (i++); 
+	}
+	public static void quickSort(int[] r, int b, int c)
+	{
+		if (b < c) 
+		{
+    	int d = partition(r, b, c);
+			quickSort(r, b, d - 1);
+			quickSort(r, d + 1, c);
+		}
+	}
+	public static void swappp(int[] r, int size)
+	{
+		for (int i = 0; i < size; i++)
+			System.out.print(r[i] + " ");
+       	System.out.println();
+	}
+}
+
+
+=====================================================================================================================================================
+
+public class linearSearch {
+    public static void main(String[] args) {
+        int[] numbers = {5,6,3,5,95,23};
+        System.out.println(linearSearch(numbers,3));
+    }
+    static int linearSearch(int[] arr, int target){
+        if(arr.length == 0){
+            return -1;
+        }
+        for(int i = 0; i < arr.length; i++){
+            if(arr[i] == target){
+                return i;
+            }
+        }
+        return -1;
+    }
+}
+
+================================================================================================================================================
