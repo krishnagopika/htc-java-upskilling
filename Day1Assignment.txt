@@ -1,0 +1,288 @@
+Q1.Consider an email id in the format firstname.lastname@xyz.com, 
+and write a program to print the first letter of the first name and the first letter of the last name in upper case. 
+
+import java.util.Scanner;
+public class Main {
+public static void main(String[] args) { System.out.println("Hello World"); Scanner m = new Scanner(System.in); String k = m.next();
+String a = "";
+for (int i = 0; i < k.length()-4; i++) { 
+if (i == 0 || k.charAt(i - 1) == '.') {
+a += k.charAt(i);
+}
+}
+a = a.toUpperCase(); 
+System.out.println(a);
+}
+}
+Q2. :Write a program to find if a matrix is symmetric. Print Yes if the matrix is symmetric, else print No.
+package com.revature;
+
+import java.util.Scanner;
+public class SymmetricMatrix {
+public static void main(String[] args) {
+Scanner scanner = new Scanner(System.in);
+System.out.print("Enter number of rows: ");
+int m = scanner.nextInt();
+System.out.print("Enter number of columns: ");
+int n = scanner.nextInt();
+int[][] matrix = new int[m][n];
+System.out.println("Enter matrix elements:");
+for (int i = 0; i < m; i++) {
+for (int j = 0; j < n; j++) {
+matrix[i][j] = scanner.nextInt();
+ }
+ }
+boolean symmetric = isSymmetric(matrix, m, n);
+if (symmetric) {
+System.out.println("Yes");
+} else {
+System.out.println("No");
+ }
+scanner.close();
+ }
+public static boolean isSymmetric(int[][] matrix, int m, int n) {
+ if (m != n) {
+return false; // A non-square matrix can't be symmetric
+ }
+for (int i = 0; i < m; i++) {
+for (int j = 0; j < n; j++) {
+if (matrix[i][j] != matrix[j][i]) {
+return false;
+}
+}
+}
+        
+return true;
+}
+}
+
+Q3: Print a given input string in the title case.
+package com.revature;
+import java.util.Scanner;
+public class TitleCaseConverter {
+public static void main(String[] args) {
+Scanner scanner = new Scanner(System.in);
+System.out.print("Enter a string: ");
+String input = scanner.nextLine();
+String titleCaseString = convertToTitleCase(input);
+System.out.println("Output: " + titleCaseString);
+scanner.close();
+    }
+public static String convertToTitleCase(String input) {
+StringBuilder result = new StringBuilder();
+boolean nextWordShouldBeCapitalized = true;
+for (char c : input.toCharArray()) {
+if (Character.isWhitespace(c)) {
+nextWordShouldBeCapitalized = true;
+} else {
+if (nextWordShouldBeCapitalized) {
+result.append(Character.toUpperCase(c));
+nextWordShouldBeCapitalized = false;
+} else {
+result.append(Character.toLowerCase(c));
+ }
+ }
+ }
+return result.toString();
+    }
+}
+
+ 
+Q4: John and Jacob are playing a dice game, if the number rolled is even, John get's a point., if the number rolled is odd Jacob get's a point. 
+John and Jacob played N games. Print who won at the end of N games. if its a tie print Tie.
+Simple
+Sample Input: 4 7 2 3 4 Sample Output:
+Tie
+Sample Input: 4 9 2 3 5
+Sample Output:
+Jacob
+Sample Input: 4 3 2 6 4 Sample Output:
+John
+import java.util.Scanner; public class Main {
+public static void main(String[] args) { Scanner k = new Scanner(System.in); int N = 5; // Number of games
+int[] a = new int[N]; int johnScore = 0; int jacobScore = 0;
+
+for (int i = 0; i < N; i++) { int m = k.nextInt(); a[i] = m;
+}
+
+for (int j = 0; j < N; j++) { if (a[j] % 2 == 0) {
+johnScore += 1;
+} else {
+jacobScore += 1;
+}
+}
+
+if (johnScore == jacobScore) { System.out.println("Tie");
+} else if (johnScore > jacobScore) { System.out.println("John");
+} else {
+System.out.println("Jacob");
+}
+}
+}
+
+
+Q5: write java programNth smallest element
+package com.revature;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class NthSmallestElement {
+	 public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the value of n: ");
+        int n = scanner.nextInt();
+        System.out.print("Enter the size of the array: ");
+        int size = scanner.nextInt();
+        
+        int[] array = new int[size];
+        System.out.println("Enter the array elements:");
+        for (int i = 0; i < size; i++) {
+            array[i] = scanner.nextInt();
+        }
+ int nthSmallest = findNthSmallest(array, n);
+        System.out.println("The " + n + "th smallest element is: " + nthSmallest);
+    }
+    
+    public static int findNthSmallest(int[] array, int n) {
+        Arrays.sort(array);
+        return array[n - 1];
+    }
+}
+
+Q6:The XYZ company has N number of employees. If an employee's name is the least common, that name is rare. Find the rare name in XYZ company(print only one name).
+Complex
+Note:Not suitable for C or C++. Input format:
+N
+Name1 Name 2 Name 3	,Name n
+Sample Input:
+8
+Jake Jane Jake Albert Alex Albert Albert Jane Sample Output:
+Alex
+package com.revature;
+
+import java.util.*; 
+
+public class RareNameFinder {
+ public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int N=sc.nextInt();
+		sc.nextLine();
+		String input=sc.nextLine();
+		String[] names=input.split(" ");
+		Map<String,Integer> nameCount=new HashMap<>();
+		for(String name:names) {
+			nameCount.put(name, nameCount.getOrDefault(name, 0)+1);
+		}
+		String rareName=null;
+		int minCount=Integer.MAX_VALUE;
+		for(Map.Entry<String, Integer>entry:nameCount.entrySet()) {
+			if(entry.getValue()<minCount) {
+				minCount=entry.getValue();
+				rareName=entry.getKey();
+			}
+			
+		}
+		System.out.println(rareName);
+
+	}
+
+}
+
+Q7.Write a program to print the multiples of the number at the first index in an array. 
+package com.revature;
+
+import java.util.Scanner;
+
+public class MultipleNumberOfFirstIndex {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int size=sc.nextInt();
+		int[] array=new int[size];
+		for(int i=0;i<size;i++) {
+			array[i]=sc.nextInt();
+			
+		}
+		int firstNumber=array[0];
+		for(int num:array) {
+			if(num%firstNumber==0) {
+				System.out.println(num+" ");
+			}
+		}
+
+	}
+
+}
+
+
+Q8.Write a program to print the perfect squares in the input array. 
+package com.revature;
+
+import java.util.Scanner;
+
+public class PerfectSquareInput {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int size=sc.nextInt();
+		int[] array=new int[size];
+		for(int i=0;i<size;i++) {
+			array[i]=sc.nextInt();
+		}
+		for(int num:array) {
+			if(Math.sqrt(num)==(int)Math.sqrt(num)) {
+				System.out.println(num+" ");
+			}
+		}
+
+	}
+
+}
+
+Q9:A string is sent in an encrypted format, each character should be shifted by a key value to reveal the secret message.
+Medium Input format:
+String s key k
+Sample Input: gneodj]
+Sample Output:
+krishna Explanation:
+all the characters in sample input are shifted right by 4
+
+package com.revature;
+
+import java.util.Scanner;
+
+public class DecryptString {
+	public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the encrypted string: ");
+        String encryptedString = scanner.nextLine();
+        System.out.print("Enter the key: ");
+        int key = scanner.nextInt();
+        
+        String decryptedString = decrypt(encryptedString, key);
+        System.out.println("Decrypted message: " + decryptedString);
+    }public static String decrypt(String encryptedString, int key) {
+        StringBuilder decrypted = new StringBuilder();
+        
+        for (char c : encryptedString.toCharArray()) {
+            if (Character.isLetter(c)) {
+                char base = Character.isLowerCase(c) ? 'a' : 'A';
+                char decryptedChar = (char) (base + (c - base + key) % 26);
+                decrypted.append(decryptedChar);
+            } else {
+                decrypted.append(c);
+            }
+        }
+        
+        return decrypted.toString();
+    }
+}
+
+
+Q10.
+
+
+
+
+

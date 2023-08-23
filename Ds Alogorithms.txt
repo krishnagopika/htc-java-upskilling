@@ -1,0 +1,285 @@
+1.BubbleSort:In bubble sort algorithm, array is traversed from first element to last element. 
+Here, current element is compared with the next element. If current element is greater than the next element, it is swapped.
+public class BubbleSort {
+    public static void main(String[] args) {
+        int[] arr = {64, 34, 25, 12, 22, 11, 90};
+        bubbleSort(arr);
+        System.out.println("Sorted array:");
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+    }
+
+    static void bubbleSort(int[] arr) {
+        int n = arr.length;
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    // Swap arr[j] and arr[j+1]
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+        }
+    }
+}
+Time Complexity:
+In the worst case, Bubble Sort has a time complexity of O(n^2), where 'n' is the number of elements in the array. 
+This is because in each iteration, it compares and possibly swaps adjacent elements, leading to a quadratic number of comparisons and swaps.
+Space Complexity:Bubble Sort has a space complexity of O(1) since it only uses a constant amount of extra space to perform the swapping of elements.
+
+2.InsertionSort:Insertion is good for small elements only because it requires more time for sorting large number of elements.
+public class InsertionSort {
+    public static void main(String[] args) {
+        int[] arr = {64, 34, 25, 12, 22, 11, 90};
+        insertionSort(arr);
+        System.out.println("Sorted array:");
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+    }
+static void insertionSort(int[] arr) {
+        int n = arr.length;
+        for (int i = 1; i < n; i++) {
+            int key = arr[i];
+            int j = i - 1;
+            while (j >= 0 && arr[j] > key) {
+                arr[j + 1] = arr[j];
+                j--;
+            }
+            arr[j + 1] = key;
+        }
+    }
+}
+Time Complexity:
+The worst-case time complexity of Insertion Sort is O(n^2), similar to Bubble Sort, for the same reason that it involves nested loops. 
+However, its best-case time complexity is O(n), which occurs when the input array is already sorted.
+.insertion Sort has a space complexity of O(1) because it sorts the array in-place,
+ meaning it doesn't require any additional memory that scales with the input size. 
+.It only uses a constant amount of extra space for variables like key, i, and j.
+
+3.SelectionSort:In selection sort algorithm, we search for the lowest element and arrange it to the proper location. 
+We swap the current element with the next lowest number.
+public class SelectionSort {
+    public static void main(String[] args) {
+        int[] arr = {64, 34, 25, 12, 22, 11, 90};
+        selectionSort(arr);
+        System.out.println("Sorted array:");
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+    }
+static void selectionSort(int[] arr) {
+        int n = arr.length;
+        for (int i = 0; i < n - 1; i++) {
+            int minIndex = i;
+            for (int j = i + 1; j < n; j++) {
+                if (arr[j] < arr[minIndex]) {
+                    minIndex = j;
+                }
+            }
+            // Swap arr[i] and arr[minIndex]
+            int temp = arr[i];
+            arr[i] = arr[minIndex];
+            arr[minIndex] = temp;
+        }
+    }
+}
+Time Complexity:
+Selection Sort has a time complexity of O(n^2) regardless of the input data distribution. 
+This is because it involves nested loops where, in each iteration, it searches for the minimum element from the remaining unsorted portion of the array.
+
+Space Complexity:
+Selection Sort has a space complexity of O(1) because it sorts the array in-place. It only requires a constant amount of extra space for variables like minIndex and temp.
+
+4.QuickSort: This algorithm follows the divide and conquer approach. Divide and conquer is a technique of breaking down the algorithms into subproblems, 
+then solving the subproblems, and combining the results back together to solve the original problem.
+
+Divide: In Divide, first pick a pivot element. After that, partition or rearrange the array into two sub-arrays such that each element in the 
+left sub-array is less than or equal to the pivot element and each element in the right sub-array is larger than the pivot element.
+
+Conquer: Recursively, sort two subarrays with Quicksort.
+Combine: Combine the already sorted array.
+
+public class QuickSort {
+    public static void main(String[] args) {
+        int[] arr = {64, 34, 25, 12, 22, 11, 90};
+        quickSort(arr, 0, arr.length - 1);
+        System.out.println("Sorted array:");
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+    }
+static int partition(int[] arr, int low, int high) {
+        int pivot = arr[high];
+        int i = (low - 1);
+        for (int j = low; j < high; j++) {
+            if (arr[j] < pivot) {
+                i++;
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+        int temp = arr[i + 1];
+        arr[i + 1] = arr[high];
+        arr[high] = temp;
+        return i + 1;
+    }
+static void quickSort(int[] arr, int low, int high) {
+        if (low < high) {
+            int pivotIndex = partition(arr, low, high);
+            quickSort(arr, low, pivotIndex - 1);
+            quickSort(arr, pivotIndex + 1, high);
+        }
+    }
+}
+Time complexity:QuickSort has an average and best-case time complexity of O(n log n), making it very efficient for large datasets. 
+However, in the worst case, its time complexity is O(n^2), which can happen when the pivot selection consistently results in unbalanced partitions.
+Space Complexity:
+QuickSort has a space complexity of O(log n) due to its recursive nature.
+
+5.Merge Sort:Merge sort is similar to the quick sort algorithm as it uses the divide and conquer approach to sort the elements. 
+It is one of the most popular and efficient sorting algorithm. It divides the given list into two equal halves, calls itself for the two halves and then merges the two sorted halves.
+ We have to define the merge() function to perform the merging.
+
+public class MergeSort {
+    public static void main(String[] args) {
+        int[] arr = {64, 34, 25, 12, 22, 11, 90};
+        mergeSort(arr, 0, arr.length - 1);
+        System.out.println("Sorted array:");
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+    }
+
+    static void merge(int[] arr, int left, int mid, int right) {
+        int n1 = mid - left + 1;
+        int n2 = right - mid;
+       int[] leftArray = new int[n1];
+        int[] rightArray = new int[n2];
+        System.arraycopy(arr, left, leftArray, 0, n1);
+        System.arraycopy(arr, mid + 1, rightArray, 0, n2);
+        int i = 0, j = 0, k = left;
+        while (i < n1 && j < n2) {
+            if (leftArray[i] <= rightArray[j]) {
+                arr[k] = leftArray[i];
+                i++;
+            } else {
+                arr[k] = rightArray[j];
+                j++;
+            }
+            k++;
+        }
+while (i < n1) {
+            arr[k] = leftArray[i];
+            i++;
+            k++;
+        }
+
+        while (j < n2) {
+            arr[k] = rightArray[j];
+            j++;
+            k++;
+        }
+    }
+static void mergeSort(int[] arr, int left, int right) {
+        if (left < right) {
+            int mid = left + (right - left) / 2;
+            mergeSort(arr, left, mid);
+            mergeSort(arr, mid + 1, right);
+            merge(arr, left, mid, right);
+        }
+    }
+}
+Time Complexity:
+MergeSort has a consistent time complexity of O(n log n) in all cases.
+
+Space Complexity:
+MergeSort has a space complexity of O(n) due to the need for temporary arrays during the merging step.
+ In the worst case, when sorting an array of size 'n', it requires additional space to store the merged subarrays. 
+This extra space is proportional to the size of the input array.
+
+6.Linear Search:Linear search is used to search a key element from multiple elements. Linear search is less used today because it is slower than binary search and hashing.
+
+Algorithm:
+Step 1: Traverse the array
+Step 2: Match the key element with array element
+Step 3: If key element is found, return the index position of the array element
+Step 4: If key element is not found, return -1
+
+public class LinearSearch {
+    public static void main(String[] args) {
+        int[] arr = {64, 34, 25, 12, 22, 11, 90};
+        int target = 22;
+        int index = linearSearch(arr, target);
+        
+        if (index != -1) {
+            System.out.println("Element found at index " + index);
+        } else {
+            System.out.println("Element not found in the array");
+        }
+    }
+static int linearSearch(int[] arr, int target) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == target) {
+                return i;  // Return the index if element is found
+            }
+        }
+        return -1;  // Return -1 if element is not found
+    }
+}
+Time Complexity:
+The time complexity of Linear Search is O(n).
+Space Complexity:
+Linear Search has a space complexity of O(1)
+
+
+7.Binary search:Binary search is used to search a key element from multiple elements. Binary search is faster than linear search.
+In case of binary search, array elements must be in ascending order. If you have unsorted array, you can sort the array using Arrays.sort(arr) method.
+public class BinarySearch {
+    public static void main(String[] args) {
+        int[] arr = {11, 12, 22, 25, 34, 64, 90};
+        int target = 34;
+        int index = binarySearch(arr, target);
+        
+        if (index != -1) {
+            System.out.println("Element found at index " + index);
+        } else {
+            System.out.println("Element not found in the array");
+        }
+    }
+static int binarySearch(int[] arr, int target) {
+        int left = 0;
+        int right = arr.length - 1;
+
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+
+            if (arr[mid] == target) {
+                return mid;
+            } else if (arr[mid] < target) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+
+        return -1;  // Return -1 if element is not found
+    }
+}
+
+Time Complexity:
+The time complexity of Binary Search is O(log n).
+Space complexity:
+Binary Search has a space complexity of O(1).
+
+
+
+
+
+
+
+
+
