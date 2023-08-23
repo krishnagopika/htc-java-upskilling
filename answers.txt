@@ -1,0 +1,339 @@
+Q1.Consider an email id in the format firstname.lastname@xyz.com, and write a program to print the first letter of the first name and the first letter of the last name in upper case.
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello World");
+        Scanner m = new Scanner(System.in);
+        String k = m.next();
+        String a = "";
+
+        for (int i = 0; i < k.length()-4; i++) { 
+            if (i == 0 || k.charAt(i - 1) == '.') {
+                a += k.charAt(i);
+            }
+        }
+        a = a.toUpperCase();
+        System.out.println(a);
+    }
+}
+
+Q2. :Write a program to find if a matrix is symmetric. Print Yes if the matrix is symmetric, else print No.
+
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello World");
+        Scanner k = new Scanner(System.in);
+        int m = k.nextInt();
+        int n = k.nextInt();
+        int[][] p = new int[m][n];
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                p[i][j] = k.nextInt();
+            }
+        }
+        boolean isSymmetric = true;
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (p[i][j] != p[j][i]) {
+                    isSymmetric = false;
+                    break;
+                }
+            }
+            if (!isSymmetric) {
+                break;
+            }
+        }
+        if (isSymmetric) {
+            System.out.println("Yes");
+        } else {
+            System.out.println("No");
+        }
+    }
+}
+
+
+Q3: Print a given input string in the title case.
+Simple
+Sample Input:
+
+public class Main {
+    public static void main(String[] args) {
+        String s = "welcome to revature";
+        String a = "";
+        String[] w = s.split(" ");
+        for (String m : w) {
+            String g = "";
+            String b = String.valueOf(m.charAt(0)).toUpperCase();
+            String c = m.substring(1).toLowerCase();
+            g = b + c;
+            a += g + " ";
+        }
+        System.out.println(a.trim());
+    }
+}
+
+
+Q4: John and Jacob are playing a dice game, if the number rolled is even, John get's a point., if the number rolled is odd Jacob get's a point. John and Jacob played N games. Print who won at the end of N games. if its a tie print Tie.
+Simple
+Sample Input: 4 7 2 3 4
+Sample Output:
+Tie
+Sample Input: 4 9 2 3 5
+Sample Output:
+Jacob
+Sample Input: 4 3 2 6 4
+Sample Output:
+John
+ANS
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner k = new Scanner(System.in);
+        int N = 5; // Number of games
+        int[] a = new int[N];
+        int johnScore = 0;
+        int jacobScore = 0;
+        
+        for (int i = 0; i < N; i++) {
+            int m = k.nextInt();
+            a[i] = m;
+        }
+        
+        for (int j = 0; j < N; j++) {
+            if (a[j] % 2 == 0) {
+                johnScore += 1;
+            } else {
+                jacobScore += 1;
+            }
+        }
+        
+        if (johnScore == jacobScore) {
+            System.out.println("Tie");
+        } else if (johnScore > jacobScore) {
+            System.out.println("John");
+        } else {
+            System.out.println("Jacob");
+        }
+    }
+}
+
+
+Q5:
+
+7. The XYZ company has N number of employees, if the name of the employee is in the format of Ana or Hanah, they are special names. Print the count of the special names in the XYZ company.
+Medium
+Input format:
+N
+Name1 Name 2 Name 3 ....,Name n
+Sample Input:
+4
+Bob Sarah Elle Khloe
+Sample Output: 2
+
+
+
+10. Write a program to find the nth smallest element in an array.
+Medium
+Input format:
+n size of array S array elements
+Sample Input:
+3
+5
+1 12 4 7 9
+Sample Output:
+7
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello World");
+        int[] k = new int[3];
+        int[] m = {1, 4, 2, 6};
+        int a = 2;
+        Arrays.sort(m);
+        System.out.println(m[a]);
+    }
+}
+
+
+9. A string is sent in an encrypted format, each character should be shifted by a key value to reveal the secret message.
+Medium
+Input format:
+String s
+key k
+Sample Input:
+gneodj]
+Sample Output:
+krishna
+Explanation:
+all the characters in sample
+input are shifted right by 4
+
+
+import java.util.Scanner;
+
+public class CaesarCipherDecryption {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the encrypted string: ");
+        String encryptedString = scanner.nextLine();
+
+        System.out.print("Enter the key: ");
+        int key = scanner.nextInt();
+
+        String decryptedString = decrypt(encryptedString, key);
+        System.out.println("Decrypted message: " + decryptedString);
+
+        scanner.close();
+    }
+
+    public static String decrypt(String encrypted, int key) {
+        StringBuilder decrypted = new StringBuilder();
+        for (int i = 0; i < encrypted.length(); i++) {
+            char currentChar = encrypted.charAt(i);
+
+            if (Character.isLetter(currentChar)) {
+                char base = Character.isUpperCase(currentChar) ? 'A' : 'a';
+                char decryptedChar = (char) (base + (currentChar - base - key + 26) % 26);
+                decrypted.append(decryptedChar);
+            } else {
+                decrypted.append(currentChar);
+            }
+        }
+        return decrypted.toString();
+    }
+}
+
+q8.Gopika Urlaganti 16:33
+3. Write a program to print the multiples of the number at the first index in an array.
+Simple
+Input format:
+(Size of the array)S Array elements
+Sample Input:
+4
+2568
+Sample Output:
+68
+Explanation:
+The first element is 2. 6 and 8 are multiples of 2.
+
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+        int[] a = {2, 4, 1, 5, 8};
+        ArrayList<Integer> k = new ArrayList<>();
+        
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] % 2 == 0) {
+                k.add(a[i]);
+            }
+        }
+        
+        for (int arr : k) {
+            System.out.println(arr);
+        }
+    }
+}
+
+68
+Explanation:
+The first element is 2. 6 and 8 are multiples of 2.
+4. Write a program to print the perfect squares in the input array.
+Simple
+Input format:
+Size of array S Array elements
+நடு
+Input format:
+5
+439161
+Sample output:
+49 16 1
+CG
+Who can see your messages? Recording On
+To:
+Amrutha
+(Direct Message)
+Message HTC JAVA FULL STACK Upskilling
+ENG IN
+16:33
+21-08-2023
+
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        int[] a = {2,9, 4, 1, 5, 8};
+        ArrayList<Integer> k = new ArrayList<>();
+        
+        for (int i = 0; i < a.length; i++) {
+            int b=(int)Math.sqrt(a[i]);
+            if (b*b ==a[i] ) {
+                k.add(a[i]);
+            }
+        }
+        
+        for (int arr : k) {
+            System.out.println(arr);
+        }
+    }
+}
+
+
+The XYZ company has N number of employees. If an employee's name is the least common, that name is rare. Find the rare name in XYZ company(print only one name).
+Complex
+Note:Not suitable for C or C++.
+Input format:
+N
+Name1 Name 2 Name 3 ....,Name n
+Sample Input:
+8
+Jake Jane Jake Albert Alex Albert Albert Jane
+Sample Output:
+Alex
+import java.util.*;
+
+public class RareNameFinder {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int N = sc.nextInt();
+        sc.nextLine(); // Consume the newline character
+        
+        String names = sc.nextLine();
+        String[] namesArray = names.split(" ");
+        HashMap<String, Integer> hm = new HashMap<>();
+        
+        for (String i : namesArray) {
+            if (hm.containsKey(i)) {
+                hm.put(i, hm.get(i) + 1);
+            } else {
+                hm.put(i, 1);
+            }
+        }
+        
+        int count = Integer.MAX_VALUE;
+        String uniqueName = "";
+        
+        for (Map.Entry<String, Integer> entry : hm.entrySet()) {
+            if (entry.getValue() < count) {
+                count = entry.getValue();
+                uniqueName = entry.getKey();
+            }
+        }
+        
+        System.out.println("Rare name is " + uniqueName);
+    }
+}
+
+
+
+
+
+
